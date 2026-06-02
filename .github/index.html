@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pablo Escobar • Kokainkongen fra Medellín</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        
+        :root {
+            --gold: #C9A227;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-serif {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        .section-header {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .modal {
+            animation: modalPopIn 0.2s ease-out forwards;
+        }
+
+        @keyframes modalPopIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .escobar-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .escobar-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .gold-accent {
+            color: #C9A227;
+        }
+
+        .dark-gradient {
+            background: linear-gradient(180deg, #18181b 0%, #09090b 100%);
+        }
+
+        .fact-number {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .nav-active {
+            color: #C9A227;
+            border-bottom: 2px solid #C9A227;
+        }
+
+        .modal-content {
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .info-row {
+            border-bottom: 1px solid #27251f;
+        }
+
+        .jungle-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url('https://picsum.photos/id/1016/2000/1200');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="bg-zinc-950 text-zinc-200">
+    <!-- NAVBAR -->
+    <nav class="bg-zinc-900 border-b border-zinc-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-11 h-11 bg-gradient-to-br from-amber-600 to-yellow-700 rounded-xl flex items-center justify-center shadow-inner">
+                        <i class="fa-solid fa-crown text-white text-3xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-3xl tracking-tighter">PABLO</span>
+                        <span class="font-bold text-3xl tracking-tighter text-amber-500">ESCOBAR</span>
+                    </div>
+                </div>
+
+                <!-- Menu -->
+                <div class="hidden md:flex items-center gap-x-8 text-sm font-medium">
+                    <a href="#fakta" class="hover:text-amber-400 transition-colors">Fakta</a>
+                    <a href="#modals" class="hover:text-amber-400 transition-colors">De 5 aspekter</a>
+                    <a href="#baggrund" class="hover:text-amber-400 transition-colors">Baggrund</a>
+                    <a href="#jungle" class="hover:text-amber-400 transition-colors">Junglen</a>
+                </div>
+
+                <div class="flex items-center gap-x-3">
+                    <button onclick="document.getElementById('modals').scrollIntoView({ behavior: 'smooth' })" 
+                            class="px-6 py-2.5 bg-white text-zinc-900 hover:bg-amber-100 transition-all font-semibold text-sm rounded-2xl flex items-center gap-x-2">
+                        <i class="fa-solid fa-book-open mr-1.5"></i>
+                        <span>Udforsk historien</span>
+                    </button>
+                    
+                    <!-- Mobile menu -->
+                    <button class="md:hidden w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white" onclick="toggleMobileMenu()">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative h-[92vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(#27251f_0.8px,transparent_1px)] bg-[length:5px_5px]"></div>
+        
+        <!-- Hero Background -->
+        <div class="absolute inset-0 bg-cover bg-center" 
+             style="background-image: linear-gradient(rgba(9,9,11,0.78), rgba(9,9,11,0.85)), url('https://picsum.photos/id/1016/2000/1400')">
+        </div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-1.5 rounded-3xl mb-6">
+                <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                <span class="text-sm font-medium tracking-[2px] text-white/90">MED ELLÍN • 1949 — 1993</span>
+            </div>
+            
+            <h1 class="heading-serif text-7xl md:text-8xl font-bold tracking-tighter mb-4 text-white">
+                PABLO<br>ESCOBAR
+            </h1>
+            <p class="max-w-md mx-auto text-2xl md:text-3xl text-white/90 font-light tracking-tight mb-3">
+                Kokainkongen fra Medellín
+            </p>
+            <p class="max-w-lg mx-auto text-lg text-white/70 mb-10">
+                En dybdegående fortælling om magt, filantropi, terror og arv
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="document.getElementById('modals').scrollIntoView({ behavior: 'smooth' })" 
+                        class="group px-10 py-4 bg-white hover:bg-amber-50 active:bg-white transition-all text-zinc-900 font-semibold rounded-3xl flex items-center justify-center gap-x-3 text-lg shadow-xl">
+                    <span>Åbn de 5 modals</span>
+                    <i class="fa-solid fa-arrow-right group-active:translate-x-1 transition-transform"></i>
+                </button>
+                
+                <button onclick="document.getElementById('jungle').scrollIntoView({ behavior: 'smooth' })" 
+                        class="px-8 py-4 border border-white/40 hover:bg-white/10 transition-all font-medium rounded-3xl flex items-center gap-x-2 text-lg">
+                    <i class="fa-solid fa-tree mr-2"></i>
+                    <span>Udforsk junglen</span>
+                </button>
+            </div>
+            
+            <div class="mt-16 flex justify-center">
+                <div class="flex items-center gap-x-2 text-xs tracking-[3px] text-white/50">
+                    <div class="h-px w-8 bg-white/30"></div>
+                    <span>SCROLL FOR MERE</span>
+                    <div class="h-px w-8 bg-white/30"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block">
+            <i class="fa-solid fa-chevron-down text-white/40 text-xl animate-bounce"></i>
+        </div>
+    </header>
+
+    <!-- QUICK STATS -->
+    <div class="max-w-7xl mx-auto px-6 -mt-10 relative z-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                <div class="flex items-baseline gap-x-1">
+                    <span class="text-5xl font-bold fact-number text-amber-400">30</span>
+                    <span class="text-2xl font-semibold text-amber-400/80">mia.</span>
+                </div>
+                <p class="text-sm text-zinc-400 mt-1">USD i formue på toppen</p>
+            </div>
+            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                <div class="flex items-baseline gap-x-1">
+                    <span class="text-5xl font-bold fact-number text-red-400">4.000+</span>
+                </div>
+                <p class="text-sm text-zinc-400 mt-1">Mennesker dræbt af kartellet</p>
+            </div>
+            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                <div class="flex items-baseline gap-x-1">
+                    <span class="text-5xl font-bold fact-number text-emerald-400">80</span>
+                    <span class="text-2xl font-semibold text-emerald-400/80">%</span>
+                </div>
+                <p class="text-sm text-zinc-400 mt-1">Af al kokain til USA (1980'erne)</p>
+            </div>
+            <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                <div class="flex items-baseline gap-x-1">
+                    <span class="text-5xl font-bold fact-number">25.000</span>
+                </div>
+                <p class="text-sm text-zinc-400 mt-1">Mennesker til hans begravelse</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5 MODALS SECTION -->
+    <section id="modals" class="max-w-7xl mx-auto px-6 pt-20 pb-12">
+        <div class="flex flex-col items-center text-center mb-12">
+            <div class="inline-block px-4 py-1 bg-amber-900/30 text-amber-400 text-xs font-bold tracking-[2px] rounded-full mb-3">INTERAKTIVT</div>
+            <h2 class="section-header">5 Vigtige Aspekter</h2>
+            <p class="max-w-md text-zinc-400 mt-3">Klik på kortene for at åbne dybdegående modals med fakta, historie og kontekst.</p>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+            
+            <!-- Card 1: Fakta -->
+            <div onclick="showModal('modal-fakta')" class="escobar-card group cursor-pointer bg-zinc-900 border border-zinc-800 hover:border-amber-900/70 rounded-3xl overflow-hidden flex flex-col">
+                <div class="h-48 relative">
+                    <img src="https://picsum.photos/id/1005/600/400" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Pablo Escobar portræt">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/70"></div>
+                    <div class="absolute top-4 right-4 bg-black/60 backdrop-blur px-3 py-1 rounded-2xl text-xs flex items-center gap-x-1.5">
+                        <i class="fa-solid fa-info-circle text-amber-400"></i>
+                        <span class="font-medium">Fakta</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="font-bold text-2xl tracking-tight mb-2">Fakta om Pablo Escobar</h3>
+                    <p class="text-zinc-400 text-sm flex-1">Fødsel, død, formue, kaldenavne og nøgletal fra hans liv.</p>
+                    <div class="mt-5 flex items-center text-amber-400 text-sm font-semibold group-hover:gap-x-2 transition-all">
+                        <span>Læs fakta</span> 
+                        <i class="fa-solid fa-arrow-right ml-1.5 transition-transform group-hover:translate-x-1"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2: Hvordan døde han -->
+            <div onclick="showModal('modal-dod')" class="escobar-card group cursor-pointer bg-zinc-900 border border-zinc-800 hover:border-red-900/70 rounded-3xl overflow-hidden flex flex-col">
+                <div class="h-48 relative">
+                    <img src="https://picsum.photos/id/251/600/400" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Dramatisk scene">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/70"></div>
+                    <div class="absolute top-4 right-4 bg-black/60 backdrop-blur px-3 py-1 rounded-2xl text-xs flex items-center gap-x-1.5">
+                        <i class="fa-solid fa-skull text-red-400"></i>
+                        <span class="font-medium">Død</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="font-bold text-2xl tracking-tight mb-2">Hvordan døde han?</h3>
+                    <p class="text-zinc-400 text-sm flex-1">Den dramatiske jagt, tagflugt og de sidste øjeblikke i Medellín.</p>
+                    <div class="mt-5 flex items-center text-red-400 text-sm font-semibold group-hover:gap-x-2 transition-all">
+                        <span>Læs historien</span> 
+                        <i class="fa-solid fa-arrow-right ml-1.5 transition-transform group-hover:translate-x-1"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Hvad transporterede han -->
+            <div onclick="showModal('modal-transport')" class="escobar-card group cursor-pointer bg-zinc-900 border border-zinc-800 hover:border-emerald-900/70 rounded-3xl overflow-hidden flex flex-col">
+                <div class="h-48 relative">
+                    <img src="https://picsum.photos/id/1016/600/400" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Jungle og transport">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/70"></div>
+                    <div class="absolute top-4 right-4 bg-black/60 backdrop-blur px-3 py-1 rounded-2xl text-xs flex items-center gap-x-1.5">
+                        <i class="fa-solid fa-plane text-emerald-400"></i>
+                        <span class="font-medium">Transport</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="font-bold text-2xl tracking-tight mb-2">Hvad transporterede han?</h3>
+                    <p class="text-zinc-400 text-sm flex-1">Kokain, jungle-laboratorier, fly, både og narco-subs.</p>
+                    <div class="mt-5 flex items-center text-emerald-400 text-sm font-semibold group-hover:gap-x-2 transition-all">
+                        <span>Se metoderne</span> 
+                        <i class="fa-solid fa-arrow-right ml-1.5 transition-transform group-hover:translate-x-1"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Hvorfor folk kunne lide ham -->
+            <div onclick="showModal('modal-folk')" class="escobar-card group cursor-pointer bg-zinc-900 border border-zinc-800 hover:border-sky-900/70 rounded-3xl overflow-hidden flex flex-col">
+                <div class="h-48 relative">
+                    <img src="https://picsum.photos/id/201/600/400" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Folk og fællesskab">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/70"></div>
+                    <div class="absolute top-4 right-4 bg-black/60 backdrop-blur px-3 py-1 rounded-2xl text-xs flex items-center gap-x-1.5">
+                        <i class="fa-solid fa-users text-sky-400"></i>
+                        <span class="font-medium">Popularitet</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="font-bold text-2xl tracking-tight mb-2">Hvorfor kunne folk lide ham?</h3>
+                    <p class="text-zinc-400 text-sm flex-1">Robin Hood-myten, boliger, fodboldbaner og de fattiges støtte.</p>
+                    <div class="mt-5 flex items-center text-sky-400 text-sm font-semibold group-hover:gap-x-2 transition-all">
+                        <span>Forstå konteksten</span> 
+                        <i class="fa-solid fa-arrow-right ml-1.5 transition-transform group-hover:translate-x-1"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Pablo Escobar i dag -->
+            <div onclick="showModal('modal-idag')" class="escobar-card group cursor-pointer bg-zinc-900 border border-zinc-800 hover:border-violet-900/70 rounded-3xl overflow-hidden flex flex-col">
+                <div class="h-48 relative">
+                    <img src="https://picsum.photos/id/160/600/400" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="Nutid og arv">
+                    <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-black/30 to-black/70"></div>
+                    <div class="absolute top-4 right-4 bg-black/60 backdrop-blur px-3 py-1 rounded-2xl text-xs flex items-center gap-x-1.5">
+                        <i class="fa-solid fa-globe text-violet-400"></i>
+                        <span class="font-medium">I dag</span>
+                    </div>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="font-bold text-2xl tracking-tight mb-2">Pablo Escobar i dag</h3>
+                    <p class="text-zinc-400 text-sm flex-1">Narcos, Hacienda Nápoles, hans søn og den omstridte arv.</p>
+                    <div class="mt-5 flex items-center text-violet-400 text-sm font-semibold group-hover:gap-x-2 transition-all">
+                        <span>Se arven</span> 
+                        <i class="fa-solid fa-arrow-right ml-1.5 transition-transform group-hover:translate-x-1"></i>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- BAGGRUND SECTION -->
+    <section id="baggrund" class="bg-zinc-900 border-t border-zinc-800 py-16">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-x-12 items-center">
+                <div class="md:col-span-7">
+                    <div class="uppercase tracking-[3px] text-xs font-bold text-amber-500 mb-2">KAPITEL 1</div>
+                    <h2 class="section-header mb-6">Baggrund: Fra fattigdom til magt</h2>
+                    
+                    <div class="prose prose-invert text-zinc-300 max-w-none">
+                        <p class="text-lg">Pablo Emilio Escobar Gaviria blev født den 1. december 1949 i Rionegro, Antioquia, Colombia. Han voksede op i Envigado nær Medellín i en almindelig middelklassefamilie.</p>
+                        
+                        <p>Allerede som teenager begyndte han med småforbrydelser: cykeltyveri, salg af falske eksamensbeviser og gravstenstyveri. I 1970'erne gik han over til smugling af cigaretter og elektronik fra USA til Colombia.</p>
+                        
+                        <p>Da kokainmarkedet eksploderede i slutningen af 1970'erne, så Escobar sin chance. Sammen med andre kriminelle fra Medellín-området dannede han det, der skulle blive verdens mest magtfulde kokainkartel.</p>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-5 mt-10 md:mt-0">
+                    <div class="bg-zinc-950 border border-zinc-800 rounded-3xl p-8">
+                        <h4 class="font-semibold mb-4 flex items-center gap-x-2">
+                            <i class="fa-solid fa-user text-amber-400"></i> 
+                            <span>Hurtige facts om hans tidlige liv</span>
+                        </h4>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex gap-x-3"><span class="text-amber-400 font-mono w-5">•</span> <span>Begyndte som 15-årig med at sælge stjålne gravsten</span></li>
+                            <li class="flex gap-x-3"><span class="text-amber-400 font-mono w-5">•</span> <span>Blev millionær allerede i 20'erne gennem smugling</span></li>
+                            <li class="flex gap-x-3"><span class="text-amber-400 font-mono w-5">•</span> <span>Valgt til kongressen i Colombia 1982 (senere fjernet)</span></li>
+                            <li class="flex gap-x-3"><span class="text-amber-400 font-mono w-5">•</span> <span>Byggede sit imperium på frygt, loyalitet og filantropi</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JUNGLE SECTION -->
+    <section id="jungle" class="jungle-bg py-20 text-white relative">
+        <div class="max-w-5xl mx-auto px-6 relative z-10">
+            <div class="max-w-2xl">
+                <div class="uppercase tracking-[3px] text-xs font-bold text-emerald-400 mb-2">KAPITEL 2 • DET HEMMELIGE NETVÆRK</div>
+                <h2 class="section-header mb-6">Baggrund: Junglen – Kartellets hjerte</h2>
+                
+                <div class="text-lg text-white/90 space-y-5">
+                    <p>Medellín-kartellets enorme succes hvilede i høj grad på Colombias tætte regnskove. Her, langt fra myndighedernes øjne, lå hundredvis af hemmelige kokain-laboratorier.</p>
+                    
+                    <p>Mange af laboratorierne var så store, at de fungerede som små byer med egne kantiner, lægefaciliteter, sovesale og endda satellit-tv. De var gemt under den tætte junglekrone og beskyttet af guerilla-grupper og svært terræn.</p>
+                </div>
+                
+                <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="bg-black/40 backdrop-blur border border-white/10 p-5 rounded-2xl">
+                        <i class="fa-solid fa-flask text-3xl text-emerald-400 mb-3"></i>
+                        <div class="font-semibold">Jungle-laboratorier</div>
+                        <div class="text-sm text-white/70 mt-1">Coca-base blev forarbejdet til rent kokain i skjulte regnskovs-labs.</div>
+                    </div>
+                    <div class="bg-black/40 backdrop-blur border border-white/10 p-5 rounded-2xl">
+                        <i class="fa-solid fa-plane text-3xl text-emerald-400 mb-3"></i>
+                        <div class="font-semibold">Hemmelige landingsbaner</div>
+                        <div class="text-sm text-white/70 mt-1">Små fly startede direkte fra junglen med tonvis af kokain.</div>
+                    </div>
+                    <div class="bg-black/40 backdrop-blur border border-white/10 p-5 rounded-2xl">
+                        <i class="fa-solid fa-tree text-3xl text-emerald-400 mb-3"></i>
+                        <div class="font-semibold">Flugt og skjul</div>
+                        <div class="text-sm text-white/70 mt-1">Da Escobar var på flugt i 1992-93, brugte han junglens terræn til at gemme sig i månedsvis.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DISCLAIMER / FOOTER -->
+    <footer class="bg-black border-t border-zinc-900 py-10">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <div class="max-w-md mx-auto">
+                <p class="text-xs text-zinc-500 leading-relaxed">
+                    Denne hjemmeside er skabt til uddannelsesmæssige og historiske formål. 
+                    Den glorificerer <strong>ikke</strong> kriminalitet, vold eller narkotikahandel. 
+                    Pablo Escobar var ansvarlig for ekstrem vold og tusindvis af dødsfald. 
+                    Historien fortælles her for at give kontekst og nuancer.
+                </p>
+                <div class="mt-6 text-[10px] text-zinc-600 tracking-wider">© 2026 • Lavet som HTML-demo</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== MODALS ========== -->
+
+    <!-- MODAL 1: Fakta -->
+    <div id="modal-fakta" onclick="if (event.target.id === 'modal-fakta') hideModal('modal-fakta')" class="hidden fixed inset-0 bg-black/90 backdrop-blur-xl z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-zinc-900 border border-zinc-700 rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between px-8 pt-8 pb-5 border-b border-zinc-800">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-amber-900/30 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-info-circle text-3xl text-amber-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold tracking-tight">Fakta om Pablo Escobar</h3>
+                        <p class="text-amber-400 text-sm">Nøgletal og biografiske facts</p>
+                    </div>
+                </div>
+                <button onclick="hideModal('modal-fakta')" class="w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-2xl transition-colors">
+                    <i class="fa-solid fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="modal-content p-8 space-y-8 text-sm">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6">
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-zinc-500 mb-1">FULD NAVN</div>
+                        <div class="font-semibold text-lg">Pablo Emilio Escobar Gaviria</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-zinc-500 mb-1">KALDENAVNE</div>
+                        <div class="font-semibold text-lg">El Patrón • The King of Cocaine</div>
+                    </div>
+                    
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-zinc-500 mb-1">FØDT</div>
+                        <div class="font-semibold">1. december 1949 • Rionegro, Colombia</div>
+                    </div>
+                    <div>
+                        <div class="text-xs uppercase tracking-widest text-zinc-500 mb-1">DØD</div>
+                        <div class="font-semibold">2. december 1993 (44 år) • Medellín</div>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-zinc-800">
+                    <div class="text-xs uppercase tracking-widest text-zinc-500 mb-3">NØGLETAL</div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center info-row pb-3">
+                            <span>Estimeret formue på toppen</span>
+                            <span class="font-mono font-bold text-amber-400 text-xl">~30 mia. USD</span>
+                        </div>
+                        <div class="flex justify-between items-center info-row pb-3">
+                            <span>Kontrollerede andel af kokain til USA</span>
+                            <span class="font-mono font-bold text-emerald-400 text-xl">Op til 80%</span>
+                        </div>
+                        <div class="flex justify-between items-center info-row pb-3">
+                            <span>Antal dræbte (estimat)</span>
+                            <span class="font-mono font-bold text-red-400 text-xl">Flere tusinde</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span>Antal mennesker til begravelse</span>
+                            <span class="font-mono font-bold text-sky-400 text-xl">Over 25.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: Hvordan døde han -->
+    <div id="modal-dod" onclick="if (event.target.id === 'modal-dod') hideModal('modal-dod')" class="hidden fixed inset-0 bg-black/90 backdrop-blur-xl z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-zinc-900 border border-zinc-700 rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden">
+            <div class="flex items-center justify-between px-8 pt-8 pb-5 border-b border-zinc-800">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-red-900/30 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-skull text-3xl text-red-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold tracking-tight">Hvordan døde han?</h3>
+                        <p class="text-red-400 text-sm">2. december 1993 • Medellín</p>
+                    </div>
+                </div>
+                <button onclick="hideModal('modal-dod')" class="w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-2xl transition-colors">
+                    <i class="fa-solid fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="modal-content p-8 space-y-6 text-sm">
+                <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-6">
+                    <p class="leading-relaxed">Efter at have undsluppet sit luksusfængsel <strong>La Catedral</strong> i juli 1992, var Pablo Escobar på flugt i 16 måneder. Den colombianske politienhed <strong>Search Bloc</strong> (med støtte fra DEA) jagtede ham intensivt.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3 flex items-center gap-x-2"><i class="fa-solid fa-clock text-red-400"></i> Tidslinje for den sidste dag</h4>
+                    <div class="space-y-4 pl-1">
+                        <div class="flex gap-4">
+                            <div class="w-5 h-5 mt-1 flex-shrink-0 rounded-full bg-red-900 flex items-center justify-center"><span class="text-[9px] font-mono">1</span></div>
+                            <div><span class="font-medium">2. december 1993</span> — Escobar lokaliseres i et hus i Los Olivos-kvarteret i Medellín via en telefonopringning til sin familie.</div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-5 h-5 mt-1 flex-shrink-0 rounded-full bg-red-900 flex items-center justify-center"><span class="text-[9px] font-mono">2</span></div>
+                            <div>Search Bloc stormer huset. Escobar og hans livvagt <strong>"Limón"</strong> flygter op på taget.</div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-5 h-5 mt-1 flex-shrink-0 rounded-full bg-red-900 flex items-center justify-center"><span class="text-[9px] font-mono">3</span></div>
+                            <div>Han bliver skudt flere gange: i <strong>torso</strong>, <strong>ben</strong> og <strong>hovedet</strong>. Hovedskuddet er dødeligt.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t border-zinc-800 text-xs text-zinc-400">
+                    <strong>Debat:</strong> Officielt dræbt af politiet. Escobar's søn, Sebastián Marroquín, har hævdet at det var selvmord. De fleste kilder og ballistiske analyser peger dog på, at politiet affyrede det fatale skud.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: Hvad transporterede han -->
+    <div id="modal-transport" onclick="if (event.target.id === 'modal-transport') hideModal('modal-transport')" class="hidden fixed inset-0 bg-black/90 backdrop-blur-xl z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-zinc-900 border border-zinc-700 rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden">
+            <div class="flex items-center justify-between px-8 pt-8 pb-5 border-b border-zinc-800">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-emerald-900/30 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-plane-departure text-3xl text-emerald-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold tracking-tight">Hvad transporterede han?</h3>
+                        <p class="text-emerald-400 text-sm">Kokain-imperiet og logistikken</p>
+                    </div>
+                </div>
+                <button onclick="hideModal('modal-transport')" class="w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-2xl transition-colors">
+                    <i class="fa-solid fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="modal-content p-8 space-y-7 text-sm">
+                <div>
+                    <p class="leading-relaxed">På højdepunktet i 1980'erne og starten af 90'erne kontrollerede Medellín-kartellet <strong>op mod 80 %</strong> af al kokain, der blev smuglet ind i USA. De sendte op til <strong>15 tons om dagen</strong>.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3">Sådan foregik det</h4>
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="bg-zinc-950 p-5 rounded-2xl border border-zinc-800">
+                            <div class="flex gap-x-3">
+                                <i class="fa-solid fa-flask mt-1 text-emerald-400"></i>
+                                <div>
+                                    <div class="font-semibold">1. Produktion i junglen</div>
+                                    <div class="text-xs text-zinc-400 mt-0.5">Coca-base fra Peru/Bolivia blev forarbejdet i hundredevis af hemmelige laboratorier dybt inde i Colombias regnskov.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-zinc-950 p-5 rounded-2xl border border-zinc-800">
+                            <div class="flex gap-x-3">
+                                <i class="fa-solid fa-plane mt-1 text-emerald-400"></i>
+                                <div>
+                                    <div class="font-semibold">2. Lufttransport</div>
+                                    <div class="text-xs text-zinc-400 mt-0.5">Små fly (Cessna m.fl.) startede fra hemmelige landingsbaner hugget ud i junglen og fløj til Caribien, Mellemamerika eller direkte mod USA.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-zinc-950 p-5 rounded-2xl border border-zinc-800">
+                            <div class="flex gap-x-3">
+                                <i class="fa-solid fa-ship mt-1 text-emerald-400"></i>
+                                <div>
+                                    <div class="font-semibold">3. Søtransport &amp; narco-subs</div>
+                                    <div class="text-xs text-zinc-400 mt-0.5">Hurtiggående både, fiskerbåde og senere semi-ubåde (narco-subs) blev brugt til at krydse Caribien.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: Hvorfor folk kunne lide ham -->
+    <div id="modal-folk" onclick="if (event.target.id === 'modal-folk') hideModal('modal-folk')" class="hidden fixed inset-0 bg-black/90 backdrop-blur-xl z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-zinc-900 border border-zinc-700 rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden">
+            <div class="flex items-center justify-between px-8 pt-8 pb-5 border-b border-zinc-800">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-sky-900/30 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-users text-3xl text-sky-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold tracking-tight">Hvorfor kunne folk lide ham?</h3>
+                        <p class="text-sky-400 text-sm">Robin Hood-myten i Medellín</p>
+                    </div>
+                </div>
+                <button onclick="hideModal('modal-folk')" class="w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-2xl transition-colors">
+                    <i class="fa-solid fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="modal-content p-8 space-y-6 text-sm">
+                <div class="bg-sky-950/30 border border-sky-900/50 rounded-2xl p-6">
+                    <p>I Medellíns fattige kvarterer (comunas) blev Pablo Escobar set som en <strong>moderne Robin Hood</strong> — "Paisa Robin Hood". Mange fattige følte sig svigtet af staten, og Escobar gav direkte tilbage.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Hvad gjorde han for de fattige?</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                        <div class="flex gap-3 bg-zinc-950 p-4 rounded-2xl"><i class="fa-solid fa-home text-sky-400 mt-1"></i> <span>Byggede tusindvis af boliger til fattige familier</span></div>
+                        <div class="flex gap-3 bg-zinc-950 p-4 rounded-2xl"><i class="fa-solid fa-futbol text-sky-400 mt-1"></i> <span>Anlagde fodboldbaner og sponsorerede lokale hold</span></div>
+                        <div class="flex gap-3 bg-zinc-950 p-4 rounded-2xl"><i class="fa-solid fa-hospital text-sky-400 mt-1"></i> <span>Donerede til hospitaler og kirker</span></div>
+                        <div class="flex gap-3 bg-zinc-950 p-4 rounded-2xl"><i class="fa-solid fa-gift text-sky-400 mt-1"></i> <span>Gav julegaver og penge direkte til børn og familier</span></div>
+                    </div>
+                </div>
+                
+                <div class="pt-4 border-t border-zinc-800 text-xs leading-relaxed text-zinc-400">
+                    <strong>Vigtigt at huske:</strong> Denne filantropi var strategisk. Den købte loyalitet og politisk beskyttelse. Samtidig var Escobar ansvarlig for ekstrem vold — herunder mord på præsidentkandidater, dommere, journalister og civile via bilbomber (bl.a. Avianca Flight 203 med 110 døde).
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5: Pablo Escobar i dag -->
+    <div id="modal-idag" onclick="if (event.target.id === 'modal-idag') hideModal('modal-idag')" class="hidden fixed inset-0 bg-black/90 backdrop-blur-xl z-[100] flex items-center justify-center p-4">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-zinc-900 border border-zinc-700 rounded-3xl max-w-2xl w-full shadow-2xl overflow-hidden">
+            <div class="flex items-center justify-between px-8 pt-8 pb-5 border-b border-zinc-800">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-violet-900/30 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-globe text-3xl text-violet-400"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold tracking-tight">Pablo Escobar i dag</h3>
+                        <p class="text-violet-400 text-sm">Arv, turisme og populærkultur (2026)</p>
+                    </div>
+                </div>
+                <button onclick="hideModal('modal-idag')" class="w-10 h-10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-zinc-800 rounded-2xl transition-colors">
+                    <i class="fa-solid fa-times text-2xl"></i>
+                </button>
+            </div>
+            
+            <div class="modal-content p-8 space-y-7 text-sm">
+                <div>
+                    <h4 class="font-semibold mb-2">Kulturel arv</h4>
+                    <p>Netflix-serien <strong>Narcos</strong> (2015-2017) gjorde ham til en global popkultur-ikon. Serien er både rost og kritiseret for at romantisere hans historie.</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3">Hacienda Nápoles i dag</h4>
+                    <p class="text-zinc-300">Escobars berømte ranch er i dag omdannet til <strong>Parque Temático Hacienda Nápoles</strong> — et stort temapark med vandland, safari, zoo og historiske udstillinger. De berømte flodheste, som Escobar importerede, lever stadig vildt i området og udgør et økologisk problem.</p>
+                </div>
+                
+                <div class="bg-zinc-950 border border-zinc-800 rounded-2xl p-5">
+                    <div class="font-semibold mb-2">Hans familie i dag</div>
+                    <p class="text-xs leading-relaxed">Hans søn <strong>Sebastián Marroquín</strong> (tidligere Juan Pablo) bor i Argentina. Han har skrevet bøger, holdt foredrag og mødt ofre for at fremme fred og forsoning. Han har gentagne gange taget afstand fra sin fars forbrydelser.</p>
+                </div>
+                
+                <div class="text-xs text-zinc-400 pt-2">
+                    Arven er dybt omstridt i Colombia. Nogle ser ham stadig som en velgører for de fattige, mens mange ønsker at komme videre fra den voldelige periode. "Narco-turisme" er kontroversiel.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent-gold', '#C9A227');
+        }
+        
+        // Modal functions
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                // Prevent body scroll
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function hideModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // Close modals with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                const openModals = document.querySelectorAll('.fixed.flex');
+                if (openModals.length > 0) {
+                    openModals[openModals.length - 1].classList.remove('flex');
+                    openModals[openModals.length - 1].classList.add('hidden');
+                    if (openModals.length === 1) {
+                        document.body.style.overflow = '';
+                    }
+                }
+            }
+        });
+        
+        // Mobile menu toggle (simple)
+        function toggleMobileMenu() {
+            const nav = document.querySelector('nav');
+            const mobileMenu = document.createElement('div');
+            mobileMenu.className = `md:hidden fixed inset-0 bg-zinc-950/95 z-[200] flex flex-col p-8`;
+            mobileMenu.innerHTML = `
+                <div class="flex justify-end mb-8">
+                    <button class="text-3xl text-zinc-400 hover:text-white" onclick="this.closest('.fixed').remove()">
+                        <i class="fa-solid fa-times"></i>
+                    </button>
+                </div>
+                <div class="flex flex-col gap-y-6 text-xl font-medium">
+                    <a href="#fakta" class="hover:text-amber-400" onclick="this.closest('.fixed').remove()">Fakta</a>
+                    <a href="#modals" class="hover:text-amber-400" onclick="this.closest('.fixed').remove()">De 5 aspekter</a>
+                    <a href="#baggrund" class="hover:text-amber-400" onclick="this.closest('.fixed').remove()">Baggrund</a>
+                    <a href="#jungle" class="hover:text-amber-400" onclick="this.closest('.fixed').remove()">Junglen</a>
+                </div>
+                <div class="mt-auto pt-8 border-t border-zinc-800">
+                    <button onclick="document.getElementById('modals').scrollIntoView({ behavior: 'smooth' }); this.closest('.fixed').remove()" 
+                            class="w-full py-4 bg-white text-zinc-900 font-semibold rounded-2xl">
+                        Åbn de 5 modals
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(mobileMenu);
+        }
+        
+        // Initialize everything
+        function init() {
+            initializeTailwind();
+            
+            // Optional: Add subtle animation to cards on load
+            const cards = document.querySelectorAll('.escobar-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    card.style.transitionDelay = (index * 60) + 'ms';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 300);
+            });
+            
+            // Easter egg: Click logo scrolls to top
+            const logo = document.querySelector('nav .flex.items-center');
+            if (logo) {
+                logo.style.cursor = 'pointer';
+                logo.addEventListener('click', () => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            }
+            
+            console.log('%c[Pablo Escobar Hjemmeside] HTML-side klar med 5 modals.', 'color:#52525b');
+        }
+        
+        // Boot the page
+        window.onload = init;
+    </script>
+</body>
+</html>
